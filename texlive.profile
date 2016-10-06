@@ -17,7 +17,7 @@ collection-context 0
 collection-fontsextra 0
 collection-fontsrecommended 1
 collection-fontutils 1
-collection-formatsextra 1
+collection-formatsextra 0
 collection-games 0
 collection-genericextra 0
 collection-genericrecommended 1
@@ -43,7 +43,7 @@ collection-langpolish 0
 collection-langportuguese 0
 collection-langspanish 0
 collection-latex 1
-collection-latexextra 0
+collection-latexextra 1
 collection-latexrecommended 1
 collection-luatex 0
 collection-mathextra 0
