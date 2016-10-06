@@ -1,6 +1,8 @@
 FROM centos:7
 MAINTAINER Thiago Figueiro thiago.figueiro@bt.com
 
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum update -y
 RUN yum install -y make perl-Tk perl-Digest-MD5 python-pip wget
 RUN mkdir /tmp/texlive && cd /tmp/texlive
 RUN curl -Lo install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
