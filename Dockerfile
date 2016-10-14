@@ -1,13 +1,32 @@
 FROM centos:7
 MAINTAINER Thiago Figueiro thiago.figueiro@bt.com
 
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-RUN yum update -y
-RUN yum install -y make perl-Tk perl-Digest-MD5 python-pip wget
-RUN mkdir /tmp/texlive && cd /tmp/texlive
-RUN curl -Lo install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-RUN tar zxvf install-tl-unx.tar.gz --strip-components=1
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+    && yum update -y \
+    && yum install -y \
+    make \
+    pandoc \
+    perl-Tk \
+    perl-Digest-MD5 \
+    python-pip \
+    wget \
+    && localedef --list-archive | grep -v -i ^en | xargs localedef --delete-from-archive \
+    && mv -f /usr/lib/locale/locale-archive /usr/lib/locale/locale-archive.tmpl \
+    && build-locale-archive \
+    && find /usr/share/i18n/locales/ -type f | grep -v /en | xargs rm \
+    && yum clean all \
+    && rpmdb --rebuilddb
+
 ADD texlive.profile /tmp/
-RUN ./install-tl -profile /tmp/texlive.profile -repository http://mirror.aut.ac.nz/CTAN/systems/texlive/tlnet
+RUN mkdir /tmp/texlive \
+    && cd /tmp/texlive \
+    && curl -Lo install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
+    && tar zxvf install-tl-unx.tar.gz --strip-components=1 \
+    && ./install-tl -profile /tmp/texlive.profile -repository http://mirror.aut.ac.nz/CTAN/systems/texlive/tlnet \
+    && rm -rf /tmp/texlive
+
 ENV PATH=/usr/local/texlive/2016/bin/x86_64-linux:$PATH
-RUN pip install Sphinx
+RUN pip install \
+    pypandoc \
+    Sphinx
+
