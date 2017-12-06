@@ -28,5 +28,7 @@ RUN mkdir /tmp/texlive \
 ENV PATH=/usr/local/texlive/2016/bin/x86_64-linux:$PATH
 RUN pip install \
     pypandoc \
+    pyaml \
+    texttable\
     Sphinx
 
