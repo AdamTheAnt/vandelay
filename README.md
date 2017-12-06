@@ -117,12 +117,24 @@ Or build it yourself by cloning this repo and then `docker built -t vandelay .`.
 
 This image contains:
 
-* [Pandoc](http://pandoc.org/).  Useful for converting between formats; e.g. markdown to reST.
+* [Pandoc](http://pandoc.org/).  Useful for converting between formats; e.g.
+  markdown to reST.
 * [pypandoc](https://pypi.python.org/pypi/pypandoc). Use Pandoc from Python.
 * [TeX Live](https://www.tug.org/texlive/)
-* [Sphinx](http://www.sphinx-doc.org/en/stable/).
-* [texttable](https://pypi.python.org/pypi/texttable/).  Use from Python to generate text ("ascii") tables in reST format.
+* [Sphinx](http://www.sphinx-doc.org/en/stable/). A tool that makes it easy to
+  create intelligent and beautiful documentation
+* [texttable](https://pypi.python.org/pypi/texttable/).  Use from Python to
+  generate text ("ascii") tables in reST format.
 
+### Tags
+
+The following tags are available:
+
+* latest: the latest version of this image, built from the master branch.
+* texlive2017: the 2017 version of Tex Live. Built from the branch with the
+  same name.
+* texlive2017: the 2016 version of Tex Live. Built from the branch with the
+  same name.
 
 ### Locales
 
