@@ -22,7 +22,7 @@ RUN mkdir /tmp/texlive \
     && cd /tmp/texlive \
     && curl -Lo install-tl-unx.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
     && tar zxvf install-tl-unx.tar.gz --strip-components=1 \
-    && ./install-tl -profile /tmp/texlive.profile -repository http://mirror.aut.ac.nz/CTAN/systems/texlive/tlnet \
+    && ./install-tl -profile /tmp/texlive.profile -repository http://mirror.ctan.org/systems/texlive/tlnet/ \
     && rm -rf /tmp/texlive
 
 ENV PATH=/usr/local/texlive/2016/bin/x86_64-linux:$PATH
